@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Chivo, Archivo_Black } from "next/font/google";
 import "./globals.css";
 
-export const chivo = Chivo({ subsets: ["latin"] });
-export const archivoBlack = Archivo_Black({
+const chivo = Chivo({ subsets: ["latin"] });
+const archivoBlack = Archivo_Black({
   subsets: ["latin"],
   weight: "400"
 });
