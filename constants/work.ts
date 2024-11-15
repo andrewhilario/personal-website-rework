@@ -10,12 +10,12 @@ export const work = [
   },
   {
     id: 2,
-    title: "Panda Pages",
+    title: "Dandadan Manga Reader",
     description:
-      "Panda Pages is a web application that allows users to read manga for free. It has a vast collection of manga series.",
-    image: "/images/panda-pages.png",
-    github: "https://github.com/andrewhilario/pandapages",
-    live: "https://pandapagesmanga.vercel.app/"
+      "Dandadan Manga Reader is a web application that allows users to read manga for free. It has a vast collection of manga series.",
+    image: "/images/dandadan.png",
+    github: "https://github.com/andrewhilario/dandadan-manga",
+    live: "https://dandadan-manga.vercel.app/"
   },
   {
     id: 3,
