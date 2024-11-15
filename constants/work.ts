@@ -12,7 +12,7 @@ export const work = [
     id: 2,
     title: "Dandadan Manga Reader",
     description:
-      "Dandadan Manga Reader is a web application that allows users to read manga for free. It has a vast collection of manga series.",
+      "Dandadan Manga Reader is a web application that allows users to read manga for free.",
     image: "/images/dandadan.png",
     github: "https://github.com/andrewhilario/dandadan-manga",
     live: "https://dandadan-manga.vercel.app/"
