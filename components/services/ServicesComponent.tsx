@@ -29,7 +29,7 @@ export default function ServicesComponent({}: Props) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const formRef = useRef<HTMLFormElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -212,7 +212,10 @@ export default function ServicesComponent({}: Props) {
                 ))}
               </ul>
               <button
-                onClick={() => selectPackage(tier.name)}
+                onClick={() => {
+                  selectPackage(tier.name);
+                  formRef.current?.scrollIntoView({ behavior: "smooth" });
+                }}
                 className={`w-full py-3 px-4 rounded-lg font-medium transition-colors ${
                   tier.recommended
                     ? "bg-[#00296b] hover:bg-[#001d4a] text-white"
@@ -284,6 +287,7 @@ export default function ServicesComponent({}: Props) {
         transition={{ delay: 0.9, duration: 0.5 }}
         className="mb-12"
         id="contact-form"
+        ref={formRef}
       >
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="md:flex">
