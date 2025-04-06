@@ -45,7 +45,7 @@ export default function Footer({}: Props) {
         href="/"
         className="text-center text-secondary mt-4 text-sm xl:text-lg"
       >
-        © 2023 andrewhilario.tech
+        © {new Date().getFullYear()} andrewhilario.tech
       </a>
     </div>
   );
