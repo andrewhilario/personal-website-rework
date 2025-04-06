@@ -16,6 +16,9 @@ export default function Navbar({}: Props) {
           <a href="/">Work</a>
         </li>
         <li className="text-md xl:text-xl text-secondary font-bold text-center p-2 rounded-lg cursor-pointer hover:bg-white">
+          <a href="/services">Services</a>
+        </li>
+        <li className="text-md xl:text-xl text-secondary font-bold text-center p-2 rounded-lg cursor-pointer hover:bg-white">
           <a href="/about">About</a>
         </li>
         <li className="text-md xl:text-xl text-secondary font-bold text-center p-2 rounded-lg cursor-pointer hover:bg-white">

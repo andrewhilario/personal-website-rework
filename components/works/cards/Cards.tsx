@@ -51,7 +51,7 @@ export default function Cards({
         alt={title}
         width={500}
         height={500}
-        className={`rounded-lg object-fill w-full transition-all duration-400 ease-in-out`}
+        className={`rounded-lg object-fill h-full w-full transition-all duration-400 ease-in-out`}
       />
 
       {screenWidth < 1024 && (
