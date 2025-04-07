@@ -24,7 +24,7 @@ export default function Navbar({}: Props) {
         <li className="text-md xl:text-xl text-secondary font-bold text-center p-2 rounded-lg cursor-pointer hover:bg-white">
           <a href="/resume">Resume</a>
         </li>
-        <li className="text-md xl:text-xl text-secondary font-bold text-center p-2 rounded-lg cursor-pointer hover:bg-white">
+        {/* <li className="text-md xl:text-xl text-secondary font-bold text-center p-2 rounded-lg cursor-pointer hover:bg-white">
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>Blogs</TooltipTrigger>
@@ -33,7 +33,7 @@ export default function Navbar({}: Props) {
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

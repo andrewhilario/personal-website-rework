@@ -1,12 +1,12 @@
 export const work = [
   {
     id: 1,
-    title: "JustAnime",
+    title: "AniLuna",
     image: "/images/just-anime.png",
     description:
-      "JustAnime is a web application that allows users to watch anime for free. It has a vast collection of anime series and movies.",
-    github: "https://github.com/andrewhilario/just-anime",
-    live: "https://just-anime-app.vercel.app/"
+      "AniLuna is a web application that allows users to watch anime for free. It has a vast collection of anime series and movies.",
+    github: "https://github.com/andrewhilario/ani-luna",
+    live: "https://ani-luna.vercel.app/"
   },
   {
     id: 2,
