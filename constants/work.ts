@@ -19,10 +19,11 @@ export const work = [
   },
   {
     id: 3,
-    title: "POS System",
-    description: "A Point of Sale System for small businesses.",
+    title: "Grocery POS System",
+    description:
+      " Grocery POS System is a web application that allows users to manage their grocery store. It has a vast collection of products.",
     image: "/images/pos-system.png",
-    github: "https://github.com/andrewhilario/POS_System_Rework"
+    github: "https://github.com/andrewhilario/grocery-pos"
   },
   {
     id: 4,
