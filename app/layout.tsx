@@ -8,43 +8,70 @@ const archivoBlack = Archivo_Black({
   weight: "400"
 });
 
+const BASE_URL = "https://andrewhilario.site";
+
 export const metadata: Metadata = {
-  title: "Andrew Hilario | Full-Stack Developer Portfolio",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Andrew Hilario | Full-Stack Developer",
+    template: "%s | Andrew Hilario"
+  },
   description:
-    "Explore the portfolio of Andrew Hilario, a skilled full-stack developer specializing in modern web technologies. Discover projects, skills, and contact information.",
+    "Portfolio of Andrew Hilario — a Full-Stack Developer building modern, performant web applications with React, Next.js, Django, and more.",
   keywords: [
     "Andrew Hilario",
     "Full-Stack Developer",
+    "Software Engineer",
     "Portfolio",
     "Web Development",
-    "Software Engineer",
-    "Projects",
     "React",
-    "Next.js"
+    "Next.js",
+    "Django",
+    "TypeScript",
+    "Philippines"
   ],
-  viewport: "width=device-width, initial-scale=1.0",
-  robots: "index, follow",
+  authors: [{ name: "Andrew Hilario", url: BASE_URL }],
+  creator: "Andrew Hilario",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true }
+  },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" }
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/icon.svg"
+  },
   openGraph: {
-    title: "Andrew Hilario | Full-Stack Developer Portfolio",
+    title: "Andrew Hilario | Full-Stack Developer",
     description:
-      "Explore the portfolio of Andrew Hilario, a skilled full-stack developer specializing in modern web technologies. Discover projects, skills, and contact information.",
-    url: "https://andrewhilario.tech",
+      "Portfolio of Andrew Hilario — a Full-Stack Developer building modern, performant web applications with React, Next.js, Django, and more.",
+    url: BASE_URL,
+    siteName: "Andrew Hilario",
     type: "website",
+    locale: "en_US",
     images: [
       {
-        url: "https://andrewhilario.tech/og-image.jpg",
+        url: "/images/profile.png",
         width: 1200,
         height: 630,
-        alt: "Andrew Hilario Portfolio"
+        alt: "Andrew Hilario — Full-Stack Developer"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Andrew Hilario | Full-Stack Developer Portfolio",
+    title: "Andrew Hilario | Full-Stack Developer",
     description:
-      "Explore the portfolio of Andrew Hilario, a skilled full-stack developer specializing in modern web technologies. Discover projects, skills, and contact information.",
-    images: ["https://andrewhilario.tech/og-image.jpg"]
+      "Portfolio of Andrew Hilario — a Full-Stack Developer building modern, performant web applications with React, Next.js, Django, and more.",
+    creator: "@andrewhilario",
+    images: ["/images/profile.png"]
+  },
+  alternates: {
+    canonical: BASE_URL
   }
 };
 

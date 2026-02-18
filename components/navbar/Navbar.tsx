@@ -1,40 +1,54 @@
-import React from "react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from "@/components/ui/tooltip";
+"use client";
 
-type Props = {};
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
-export default function Navbar({}: Props) {
+const navLinks = [
+  { href: "/", label: "Work" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/resume", label: "Resume" }
+];
+
+export default function Navbar() {
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav>
-      <ul className="flex justify-center w-full gap-5 items-center px-4 py-1 mt-6 rounded-2xl  bg-[#F9F7FE]">
-        <li className="text-md xl:text-xl text-secondary font-bold text-center p-2 rounded-lg cursor-pointer hover:bg-white">
-          <a href="/">Work</a>
-        </li>
-        <li className="text-md xl:text-xl text-secondary font-bold text-center p-2 rounded-lg cursor-pointer hover:bg-white">
-          <a href="/services">Services</a>
-        </li>
-        <li className="text-md xl:text-xl text-secondary font-bold text-center p-2 rounded-lg cursor-pointer hover:bg-white">
-          <a href="/about">About</a>
-        </li>
-        <li className="text-md xl:text-xl text-secondary font-bold text-center p-2 rounded-lg cursor-pointer hover:bg-white">
-          <a href="/resume">Resume</a>
-        </li>
-        {/* <li className="text-md xl:text-xl text-secondary font-bold text-center p-2 rounded-lg cursor-pointer hover:bg-white">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>Blogs</TooltipTrigger>
-              <TooltipContent>
-                <p>Coming Soon</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </li> */}
-      </ul>
-    </nav>
+    <header
+      className={`sticky top-4 z-50 w-full flex justify-center px-4 transition-all duration-300`}
+    >
+      <nav
+        className={`flex items-center gap-1 px-3 py-2 rounded-2xl transition-all duration-300 ${
+          scrolled
+            ? "bg-white/80 backdrop-blur-md shadow-lg shadow-secondary/5 border border-secondary/10"
+            : "bg-white/60 backdrop-blur-sm border border-secondary/10"
+        }`}
+      >
+        {navLinks.map(({ href, label }) => {
+          const isActive = pathname === href;
+          return (
+            <Link
+              key={href}
+              href={href}
+              className={`relative px-4 py-2 rounded-xl text-sm xl:text-base font-semibold transition-all duration-200 ${
+                isActive
+                  ? "bg-secondary text-primary shadow-sm"
+                  : "text-secondary hover:bg-secondary/8"
+              }`}
+            >
+              {label}
+            </Link>
+          );
+        })}
+      </nav>
+    </header>
   );
 }

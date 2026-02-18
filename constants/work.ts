@@ -19,27 +19,29 @@ export const work = [
   },
   {
     id: 3,
-    title: "Grocery POS System",
+    title: "Grocery Genius POS",
     description:
-      " Grocery POS System is a web application that allows users to manage their grocery store. It has a vast collection of products.",
-    image: "/images/pos-system.png",
-    github: "https://github.com/andrewhilario/grocery-pos"
+      "A modern, feature-rich Point of Sale system designed for grocery stores and retail businesses. Features a POS terminal, inventory management, coupon system, receipt tracking, analytics dashboard, and dark mode support — powered by React and Supabase.",
+    image: "/images/grocery-genius-pos.png",
+    github: "https://github.com/andrewhilario/grocery-genius-pos",
+    live: "https://grocery-genius-pos.vercel.app/"
   },
   {
     id: 4,
-    title: "Servicify",
+    title: "CarRent PH",
     description:
-      "Servicify is a web application that allows users to book services. It has a vast collection of services.",
-    image: "/images/servicify.png",
-    github: "https://github.com/andrewhilario/servicify_web"
+      "A full-featured car rental platform built with React, TypeScript, Supabase, and Stripe. Supports car listings with multi-image upload, real-time chat between renters and owners, a 5-star review system, and secure Stripe payment processing with automated owner payouts.",
+    image: "/images/carrentalph.png",
+    github: "https://github.com/andrewhilario/carrent",
+    live: "https://carrentalph.vercel.app/"
   },
   {
     id: 5,
-    title: "Socials App",
+    title: "DjangoKickstartX",
     description:
-      "Socials App is a web application that allows users to post and share their thoughts. It has a vast collection of users.",
-    image: "/images/socials-app.png",
-    github: "https://github.com/andrewhilario/socialmedia-chakraui",
-    live: "https://socialmedia-chakraui.vercel.app/"
+      "DjangoKickstartX is a CLI tool that scaffolds production-ready Django projects in seconds. It supports two project types (MVP or API), function-based or class-based views, SQLite or PostgreSQL databases, and automatically creates a virtual environment with all dependencies installed.",
+    image: "/images/djangokickstartx.png",
+    github: "https://github.com/andrewhilario/django-kickstartx",
+    live: "https://www.djangokickstartx.me/"
   }
 ];

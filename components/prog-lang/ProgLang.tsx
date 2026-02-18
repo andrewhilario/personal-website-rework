@@ -1,149 +1,135 @@
 "use client";
 
-import { motion, useAnimation } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
-import { FaHtml5, FaCss3Alt, FaReact, FaGitAlt } from "react-icons/fa";
-import { SiDjango, SiTypescript, SiTailwindcss } from "react-icons/si";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import React, { useRef, useState } from "react";
+import { FaCss3Alt, FaGitAlt, FaHtml5, FaReact } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 import { RiNextjsFill } from "react-icons/ri";
+import { SiDjango, SiTailwindcss, SiTypescript } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 
-type Props = {};
+const techStack = [
+  { icon: FaHtml5, label: "HTML5", color: "#E44D26" },
+  { icon: FaCss3Alt, label: "CSS3", color: "#264DE4" },
+  { icon: IoLogoJavascript, label: "JavaScript", color: "#F0DB4F" },
+  { icon: SiTypescript, label: "TypeScript", color: "#3178C6" },
+  { icon: FaReact, label: "React", color: "#61DAFB" },
+  { icon: RiNextjsFill, label: "Next.js", color: "#111111" },
+  { icon: SiDjango, label: "Django", color: "#092E20" },
+  { icon: SiTailwindcss, label: "Tailwind", color: "#38B2AC" },
+  { icon: FaGitAlt, label: "Git", color: "#F05032" },
+  { icon: VscVscode, label: "VS Code", color: "#007ACC" }
+];
 
-const isBrowser = typeof window !== "undefined";
+function TechCard({
+  icon: Icon,
+  label,
+  color,
+  index
+}: {
+  icon: React.ElementType;
+  label: string;
+  color: string;
+  index: number;
+}) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [hovered, setHovered] = useState(false);
 
-export default function ProgLang({}: Props) {
-  let screenWidth = 0;
+  // Magnetic motion values
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const sx = useSpring(mx, { stiffness: 300, damping: 20 });
+  const sy = useSpring(my, { stiffness: 300, damping: 20 });
 
-  if (isBrowser) {
-    screenWidth = window.innerWidth;
-  }
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = wrapperRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    mx.set(((e.clientX - rect.left) / rect.width - 0.5) * 14);
+    my.set(((e.clientY - rect.top) / rect.height - 0.5) * 14);
+  };
 
-  const times = 100;
-  const wordsArray = Array(times).fill("techstack");
+  const onLeave = () => {
+    mx.set(0);
+    my.set(0);
+    setHovered(false);
+  };
 
-  const numRows = screenWidth > 1024 ? 5 : 9;
-  const [positions, setPositions] = useState(Array(numRows).fill(0));
-
-  const prevScrollY = useRef<number>(0);
-  const controls = useAnimation();
-  const requestRef = useRef<ReturnType<typeof requestAnimationFrame> | null>(
-    null
-  );
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const deltaY = (currentScrollY - prevScrollY.current) as number;
-      prevScrollY.current = currentScrollY;
-
-      setPositions((prevPositions) =>
-        prevPositions.map((position, index) =>
-          index % 2 === 0 ? position - deltaY : position + deltaY
-        )
-      );
-
-      controls.start((index) => ({
-        x: positions[index],
-        transition: { type: "spring", stiffness: 80, damping: 30 }
-      }));
-    };
-    // Ensure window is defined
-    if (typeof window !== "undefined") {
-      // Set initial scrollY value
-      prevScrollY.current = window.scrollY;
-
-      const onScroll = () => {
-        if (requestRef.current === null) {
-          requestRef.current = requestAnimationFrame(() => {
-            handleScroll();
-            requestRef.current = null;
-          });
-        }
-      };
-
-      window.addEventListener("scroll", onScroll);
-
-      return () => {
-        if (requestRef.current) {
-          cancelAnimationFrame(requestRef.current);
-        }
-        window.removeEventListener("scroll", onScroll);
-      };
-    }
-  }, [controls, positions]);
   return (
-    <div className="relative w-full flex justify-center items-center">
-      <div className="mt-18 xl:mt-24 flex flex-col text-center xl:px-72 gap-20 py-10 justify-center z-10 relative">
-        <h1 className="text-[#00296B] text-4xl xl:text-6xl font-black uppercase">
-          Programming Languages & Development Tools
-        </h1>
-        <div className="grid grid-cols-5 w-[90%] xl:w-[70%] mx-auto justify-center items-center">
-          <div className="flex justify-center items-center">
-            <FaHtml5 className="text-5xl xl:text-8xl text-[#E44D26]" />
-          </div>
-          <div className="flex justify-center items-center">
-            <FaCss3Alt className="text-5xl xl:text-8xl text-[#264DE4]" />
-          </div>
-          <div className="flex justify-center items-center">
-            <SiDjango className="text-5xl xl:text-8xl text-[#092E20]" />
-          </div>
-          <div className="flex justify-center items-center">
-            {" "}
-            <IoLogoJavascript className="text-5xl xl:text-8xl text-[#F0DB4F]" />
-          </div>
-          <div className="flex justify-center items-center">
-            <SiTypescript className="text-5xl xl:text-8xl text-[#3178C6]" />
-          </div>
-        </div>
-        <div className="grid grid-cols-5 w-[90%] xl:w-[70%] mx-auto  justify-center items-center">
-          <div className="flex justify-center items-center">
-            {" "}
-            <RiNextjsFill className="text-5xl xl:text-8xl text-[#000000]" />
-          </div>
-          <div className="flex justify-center items-center">
-            {" "}
-            <FaReact className="text-5xl xl:text-8xl text-[#61DAFB]" />
-          </div>
-          <div className="flex justify-center items-center">
-            {" "}
-            <SiTailwindcss className="text-5xl xl:text-8xl text-[#38B2AC]" />
-          </div>
-          <div className="flex justify-center items-center">
-            {" "}
-            <VscVscode className="text-5xl xl:text-8xl text-[#007ACC]" />
-          </div>
-          <div className="flex justify-center items-center">
-            <FaGitAlt className="text-5xl xl:text-8xl text-[#F05032]" />
-          </div>
+    <motion.div
+      initial={{ opacity: 0, y: 24, scale: 0.82 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{
+        type: "spring",
+        stiffness: 130,
+        damping: 14,
+        delay: index * 0.06
+      }}
+      className="flex flex-col items-center gap-2"
+    >
+      <div
+        ref={wrapperRef}
+        onMouseMove={onMove}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={onLeave}
+        className="flex flex-col items-center gap-2 cursor-pointer"
+      >
+        <motion.div
+          style={{ x: sx, y: sy }}
+          animate={{
+            scale: hovered ? 1.22 : 1,
+            boxShadow: hovered
+              ? `0 8px 24px -4px ${color}55`
+              : "0 1px 4px rgba(0,0,0,0.06)"
+          }}
+          transition={{ type: "spring", stiffness: 260, damping: 18 }}
+          className="w-12 h-12 xl:w-14 xl:h-14 flex items-center justify-center rounded-2xl bg-white border border-secondary/10"
+        >
+          <Icon
+            style={{ color: hovered ? color : undefined }}
+            className="text-2xl xl:text-3xl transition-colors duration-200"
+          />
+        </motion.div>
+        <span
+          style={{ color: hovered ? color : undefined }}
+          className="text-[10px] xl:text-xs font-medium text-secondary/50 transition-colors duration-200"
+        >
+          {label}
+        </span>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function ProgLang() {
+  return (
+    <section className="relative w-full py-20 xl:py-28 px-4">
+      <div className="max-w-3xl mx-auto text-center">
+        <motion.p
+          initial={{ opacity: 0, y: -8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="text-sm font-semibold text-secondary/40 uppercase tracking-widest mb-3"
+        >
+          Tech Stack
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: -8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+          className="text-3xl xl:text-5xl font-black text-secondary mb-12"
+        >
+          Tools &amp; Technologies
+        </motion.h2>
+
+        <div className="grid grid-cols-5 xl:grid-cols-10 gap-6 xl:gap-8">
+          {techStack.map((tech, i) => (
+            <TechCard key={tech.label} {...tech} index={i} />
+          ))}
         </div>
       </div>
-      <div className="flex absolute w-full top-0 flex-col bg-primary overflow-hidden z-0">
-        {[...Array(numRows)].map((_, rowIndex) => {
-          const isOddRow = rowIndex % 2 !== 0;
-          return (
-            <div
-              className={`flex justify-center w-full ${
-                rowIndex > 0
-                  ? `-mt-[50px] xl:-mt-[100px] -ml-[${150 * rowIndex}]`
-                  : ""
-              } text-center`}
-              key={rowIndex}
-            >
-              {wordsArray.map((word, wordIndex) => (
-                <motion.h2
-                  key={wordIndex}
-                  custom={rowIndex}
-                  animate={controls}
-                  className="text-[70px] xl:text-[150px] font-black text-[#00296B]/10 uppercase space-x-2"
-                >
-                  {word}
-                </motion.h2>
-              ))}
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    </section>
   );
 }

@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="w-full bg-primary flex items-center flex-col">
+    <main className="w-full bg-primary flex flex-col items-center">
       <Navbar />
       <Hero />
       <Works />

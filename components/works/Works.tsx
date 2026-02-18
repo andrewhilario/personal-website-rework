@@ -81,38 +81,45 @@ export default function Works({}: Props) {
   }, [controls, positions]);
 
   return (
-    <div className="relative mt-24 w-full">
-      <div className="grid grid-cols-1 xl:grid-cols-2 px-4 xl:px-72 gap-20 py-10 bg-white/0 mt-24 z-10 relative">
-        {work.map((item: WorkType) => {
-          if (item.id === 5) {
-            return (
-              <div
-                key={item.id}
-                className="xl:col-span-2 xl:w-1/2 mx-auto w-full"
-              >
-                <Cards
-                  title={item.title}
-                  image={item.image}
-                  github={item.github}
-                  live={item.live}
-                  description={item.description}
-                />
-              </div>
-            );
-          }
+    <div className="relative mt-16 w-full">
+      {/* Section heading — fades in on scroll */}
+      <motion.div
+        className="text-center mb-4 relative z-10"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <p className="text-sm font-semibold text-secondary/40 uppercase tracking-widest mb-2">
+          Portfolio
+        </p>
+        <h2 className="text-3xl xl:text-5xl font-black text-secondary">
+          Selected Works
+        </h2>
+      </motion.div>
 
-          return (
-            <Cards
-              key={item.id}
-              title={item.title}
-              image={item.image}
-              github={item.github}
-              live={item.live}
-              description={item.description}
-            />
-          );
-        })}
-      </div>
+      {/* Cards grid — staggered entrance */}
+      <motion.div
+        className="grid grid-cols-1 xl:grid-cols-2 px-4 xl:px-72 gap-8 py-10 bg-white/0 mt-10 z-10 relative"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-60px" }}
+        variants={{
+          hidden: {},
+          show: { transition: { staggerChildren: 0.12 } }
+        }}
+      >
+        {work.map((item: WorkType) => (
+          <Cards
+            key={item.id}
+            title={item.title}
+            image={item.image}
+            github={item.github}
+            live={item.live}
+            description={item.description}
+          />
+        ))}
+      </motion.div>
       {/* Background */}
       <div className="flex absolute w-full top-0 flex-col bg-primary overflow-hidden z-0">
         {[...Array(numRows)].map((_, rowIndex) => {

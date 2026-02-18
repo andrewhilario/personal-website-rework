@@ -88,7 +88,7 @@ export default function ServicesComponent({}: Props) {
   const tiers = [
     {
       name: "Basic",
-      price: "₱3,000 - ₱5,000",
+      price: "₱5,000 - ₱10,000",
       recommended: false,
       features: [
         { name: "Pages", value: "1-3 pages" },
@@ -102,7 +102,7 @@ export default function ServicesComponent({}: Props) {
     },
     {
       name: "Standard",
-      price: "₱6,000 - ₱10,000",
+      price: "₱11,000 - ₱18,000",
       recommended: true,
       features: [
         { name: "Pages", value: "3-5 pages" },
@@ -244,7 +244,7 @@ export default function ServicesComponent({}: Props) {
             </p>
           </div>
           <div className="text-lg font-bold">
-            ₱5,000 – ₱15,000+
+            ₱15,000 – ₱25,000+
             <span className="text-sm font-normal text-gray-500 block">
               (scales with features)
             </span>
