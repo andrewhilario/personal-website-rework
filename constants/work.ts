@@ -43,5 +43,14 @@ export const work = [
     image: "/images/djangokickstartx.png",
     github: "https://github.com/andrewhilario/django-kickstartx",
     live: "https://www.djangokickstartx.me/"
+  },
+  {
+    id: 6,
+    title: "NextjsKickstartX",
+    description:
+      "NextjsKickstartX is a CLI tool that scaffolds production-ready Next.js apps in seconds. It ships with Shadcn UI, Zustand, TanStack Query, Auth.js v5, and Tailwind CSS — all pre-configured with 5 starter templates (Default, Admin Dashboard, E-Commerce, Blog, SaaS Landing) and optional PWA support.",
+    image: "/images/nextjskickstartx.png",
+    github: "https://github.com/andrewhilario/nextjskickstartx",
+    live: "https://nextjskickstartx.vercel.app/"
   }
 ];
