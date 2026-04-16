@@ -11,7 +11,7 @@ type Props = {
   title: string;
   description: string;
   image: string;
-  github: string;
+  github?: string;
   live?: string;
 };
 
@@ -62,16 +62,18 @@ export default function Cards({ title, image, github, live, description }: Props
           transition={{ duration: 0.25 }}
           className="absolute inset-0 bg-secondary/60 flex items-center justify-center gap-3"
         >
-          <Link
-            href={github}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 bg-white text-secondary font-semibold text-sm px-4 py-2 rounded-lg hover:bg-primary transition-colors duration-150"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <FaGithub size={15} />
-            Code
-          </Link>
+          {github && (
+            <Link
+              href={github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 bg-white text-secondary font-semibold text-sm px-4 py-2 rounded-lg hover:bg-primary transition-colors duration-150"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <FaGithub size={15} />
+              Code
+            </Link>
+          )}
           {live && (
             <Link
               href={live}
@@ -95,15 +97,17 @@ export default function Cards({ title, image, github, live, description }: Props
             {title}
           </h3>
           <div className="flex items-center gap-2 shrink-0 mt-0.5">
-            <Link
-              href={github}
-              target="_blank"
-              rel="noreferrer"
-              className="text-secondary/40 hover:text-secondary transition-colors duration-150"
-              aria-label="GitHub repository"
-            >
-              <FaGithub size={18} />
-            </Link>
+            {github && (
+              <Link
+                href={github}
+                target="_blank"
+                rel="noreferrer"
+                className="text-secondary/40 hover:text-secondary transition-colors duration-150"
+                aria-label="GitHub repository"
+              >
+                <FaGithub size={18} />
+              </Link>
+            )}
             {live && (
               <Link
                 href={live}
