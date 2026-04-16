@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Chivo, Archivo_Black } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const chivo = Chivo({ subsets: ["latin"] });
@@ -82,7 +83,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={chivo.className}>{children}</body>
+      <body className={chivo.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
