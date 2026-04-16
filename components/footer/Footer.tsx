@@ -8,7 +8,7 @@ import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 const socialLinks = [
   { href: "https://github.com/andrewhilario", icon: FaGithub, label: "GitHub" },
   { href: "https://www.linkedin.com/in/hilarioandrew12/", icon: FaLinkedin, label: "LinkedIn" },
-  { href: "https://www.facebook.com/andrew.hilario.0412", icon: FaFacebook, label: "Facebook" }
+  { href: "https://www.facebook.com/drewdlesss", icon: FaFacebook, label: "Facebook" }
 ];
 
 const navLinks = [
